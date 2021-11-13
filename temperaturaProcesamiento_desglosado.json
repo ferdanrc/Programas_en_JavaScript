@@ -1,0 +1,296 @@
+[
+	{
+		"id":"62969350.a923a4",
+		"type":"tab",
+		"label":"Flow 1",
+		"disabled":false,
+		"info":""
+	}
+
+	,{
+		"id":"ff924c7d.e124e8",
+		"type":"cpu",
+		"z":"62969350.a923a4",
+		"name":"Core Usage",
+		"msgCore":false,
+		"msgOverall":false,
+		"msgArray":true,
+		"msgTemp":false,
+		"x":340,
+		"y":60,
+		"wires":[["4331efb7.b2f1b8"]]
+	}
+
+	,{
+		"id":"7fdadb5d.099fac",
+		"type":"inject",
+		"z":"62969350.a923a4",
+		"name":"",
+		"props":[{"p":"payload"},
+		{"p":"topic","vt":"str"}],
+		"repeat":"1",
+		"crontab":"",
+		"once":false,
+		"onceDelay":0.1,
+		"topic":"",
+		"payload":"",
+		"payloadType":"date",
+		"x":120,
+		"y":120,
+		"wires":[["ff924c7d.e124e8","d373b3f5.a9a338"]]
+	}
+
+	,{
+		"id":"661d2514.386d54",
+		"type":"debug",
+		"z":"62969350.a923a4",
+		"name":"",
+		"active":false,
+		"tosidebar":true,
+		"console":false,
+		"tostatus":false,
+		"complete":"true",
+		"targetType":"full",
+		"statusVal":"",
+		"statusType":"auto",
+		"x":390,
+		"y":240,
+		"wires":[]
+	}
+
+	,{
+		"id":"e49f9f3e.d69698",
+		"type":"debug",
+		"z":"62969350.a923a4",
+		"name":"structData",
+		"active":true,
+		"tosidebar":true,
+		"console":false,
+		"tostatus":false,
+		"complete":"true",
+		"targetType":"full",
+		"statusVal":"",
+		"statusType":"auto",
+		"x":670,
+		"y":440,
+		"wires":[]
+	}
+
+	,{
+		"id":"d373b3f5.a9a338",
+		"type":"cpu",
+		"z":"62969350.a923a4",
+		"name":"CPU Temperature",
+		"msgCore":false,
+		"msgOverall":false,
+		"msgArray":false,
+		"msgTemp":true,
+		"x":330,
+		"y":140,
+		"wires":[["661d2514.386d54","e3217fd3.8e1688"]]
+	}
+
+	,{
+		"id":"e3217fd3.8e1688",
+		"type":"ui_gauge",
+		"z":"62969350.a923a4",
+		"name":"CPU Temperature",
+		"group":"dd70abe0.14cb38",
+		"order":0,"width":"6",
+		"height":"6","gtype":"gage",
+		"title":"Teperature ºC",
+		"label":"units","format":"{{value}}",
+		"min":0,
+		"max":"70",
+		"colors":["#00b500","#e6e600","#ca3838"],
+		"seg1":"",
+		"seg2":"",
+		"x":630,
+		"y":280,
+		"wires":[]
+	}
+
+	,{
+		"id":"4331efb7.b2f1b8",
+		"type":"function",
+		"z":"62969350.a923a4",
+		"name":"",
+		"func":"msg.payload = {\n    corespd1:msg.payload[0].speed,\n    corespd2:msg.payload[1].speed,\n    corespd3:msg.payload[2].speed,\n    corespd4:msg.payload[3].speed\n};\nreturn msg;",
+		"outputs":1,
+		"noerr":0,
+		"initialize":"",
+		"finalize":"",
+		"x":500,
+		"y":80,
+		"wires":[["a76ab539.469a98","43c05735.89106","fb11e89d.6ef2b","e895a837.31f718"]]
+	}
+
+	,{
+		"id":"a76ab539.469a98",
+		"type":"ui_gauge",
+		"z":"62969350.a923a4",
+		"name":"CPU MHz 1",
+		"group":"dd70abe0.14cb38",
+		"order":1,
+		"width":"3",
+		"height":"3",
+		"gtype":"gage",
+		"title":"Core 1 Usage Mhz",
+		"label":"units",
+		"format":"{{msg.payload.corespd1}}",
+		"min":0,
+		"max":"2400",
+		"colors":["#00b500","#e6e600","#ca3838"],
+		"seg1":"","seg2":"","x":730,"y":100,"wires":[]
+	}
+
+	,{
+		"id":"43c05735.89106",
+		"type":"ui_gauge",
+		"z":"62969350.a923a4",
+		"name":"CPU MHz 2",
+		"group":"dd70abe0.14cb38",
+		"order":1,"width":"3",
+		"height":"3",
+		"gtype":"gage",
+		"title":"Core 1 Usage Mhz",
+		"label":"units",
+		"format":"{{msg.payload.corespd1}}",
+		"min":0,
+		"max":"2400",
+		"colors":["#00b500","#e6e600","#ca3838"],
+		"seg1":"",
+		"seg2":"",
+		"x":730,
+		"y":140,
+		"wires":[]
+	}
+
+	,{
+		"id":"fb11e89d.6ef2b",
+		"type":"ui_gauge",
+		"z":"62969350.a923a4",
+		"name":"CPU MHz 3",
+		"group":"dd70abe0.14cb38",
+		"order":1,"width":"3",
+		"height":"3",
+		"gtype":"gage",
+		"title":"Core 3 Usage Mhz",
+		"label":"units","format":"{{msg.payload.corespd1}}",
+		"min":0,
+		"max":"2400",
+		"colors":["#00b500","#e6e600","#ca3838"],
+		"seg1":"",
+		"seg2":"",
+		"x":710,
+		"y":180,
+		"wires":[]
+	}
+
+	,{
+		"id":"e895a837.31f718",
+		"type":"ui_gauge",
+		"z":"62969350.a923a4",
+		"name":"CPU MHz 4",
+		"group":"dd70abe0.14cb38",
+		"order":1,
+		"width":"3",
+		"height":"3",
+		"gtype":"gage",
+		"title":"Core 4 Usage Mhz",
+		"label":"units",
+		"format":"{{msg.payload.corespd1}}",
+		"min":0,
+		"max":"2400",
+		"colors":["#00b500","#e6e600","#ca3838"],
+		"seg1":"",
+		"seg2":"",
+		"x":690,
+		"y":220,
+		"wires":[]
+	}
+
+	,{
+		"id":"3fcb8517.54a2d2",
+		"type":"cpu",
+		"z":"62969350.a923a4",
+		"name":"Core Usage",
+		"msgCore":false,
+		"msgOverall":true,
+		"msgArray":false,
+		"msgTemp":false,
+		"x":290,
+		"y":380,
+		"wires":[["e49f9f3e.d69698","f9fd199.a22e668"]]
+	}
+	
+	,{
+		"id":"f556e346.48b128",
+		"type":"inject",
+		"z":"62969350.a923a4",
+		"name":"",
+		"props":[{"p":"payload"},{"p":"topic","vt":"str"}],
+		"repeat":"1",
+		"crontab":"",
+		"once":false,
+		"onceDelay":0.1,
+		"topic":"",
+		"payload":"",
+		"payloadType":"date",
+		"x":120,
+		"y":260,
+		"wires":[["3fcb8517.54a2d2"]]
+	}
+
+	,{
+		"id":"f9fd199.a22e668",
+		"type":"ui_chart",
+		"z":"62969350.a923a4",
+		"name":"",
+		"group":"dd70abe0.14cb38",
+		"order":5,
+		"width":"6",
+		"height":"6",
+		"label":"Uso en el core",
+			"chartType":"line",
+			"legend":"false",
+			"xformat":"HH:mm:ss",
+			"interpolate":"linear",
+			"nodata":"",
+			"dot":false,
+			"ymin":"",
+			"ymax":"",
+			"removeOlder":1,
+			"removeOlderPoints":"",
+			"removeOlderUnit":"3600",
+			"cutout":0,
+			"useOneColor":false,
+			"useUTC":false,
+			"colors":["#1f77b4","#aec7e8","#ff7f0e","#2ca02c","#98df8a","#d62728","#ff9896","#9467bd","#c5b0d5"],
+			"outputs":1,
+			"useDifferentColor":false,
+			"x":540,
+			"y":340,
+			"wires":[[]]
+	}
+
+	,{
+		"id":"dd70abe0.14cb38",
+		"type":"ui_group",
+		"name":"OS",
+		"tab":"6d54a11.6b2c0e",
+		"order":5,
+		"disp":true,
+		"width":"6",
+		"collapse":false
+	}
+
+	,{
+		"id":"6d54a11.6b2c0e",
+		"type":"ui_tab",
+		"name":"Home",
+		"icon":"dashboard",
+		"disabled":false,
+		"hidden":false
+	}
+]

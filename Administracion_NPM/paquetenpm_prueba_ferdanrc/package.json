@@ -1,0 +1,19 @@
+{
+  "name": "paquetenpm_prueba_ferdanrc",
+  "version": "1.0.0",
+  "description": "Paquete de prueba",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferdanrc/paquetenpm_prueba_ferdanrc.git"
+  },
+  "author": "ferdanrc",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ferdanrc/PaqueteNPM/issues"
+  },
+  "homepage": "https://github.com/ferdanrc/PaqueteNPM#readme"
+}
