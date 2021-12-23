@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Index</title>
+</head>
+
+<body>
+  <h1>Método POST</h1>
+  <form method="post" action="respuesta">
+    <label>Nombre: <input type="text" name="nombre"></label>
+    <input type="submit" value="Submit">
+    
+  </form>
+
+<script src="https://cdn.plot.ly/plotly-2.6.3.min.js"></script>
+<div id="myPlot" style="width:100%;max-width:700px"></div>
+
+<script>
+
+//Con los datos obtenidos con el sensor infrarojo de temperatura, grafica (T vs t)
+
+var xArray = [0,10,20,30,40,50];
+var yArray = [21,22,21,23,22,24];
+
+//agraga un espacio para insertar el nombre de quien tomo los datos
+
+var data = [{
+  x: xArray,
+  y: yArray,
+  mode: "lines",  //tipo de grafica, lineas
+  type: "scatter" //tipo de grafica de distribución
+}];
+
+//ajusta los rangos deacuerdo a las mediciones obtenidas
+var layout = {
+  xaxis: {range: [0, 60], title: "minutos"},
+  yaxis: {range: [20, 30], title: "grados celsius"},
+  title: "Temperatura vs Tiempo"
+};
+
+// mustra la gráfica en tu webserver
+Plotly.newPlot("myPlot", data, layout);
+</script>
+</body>
+</html>
